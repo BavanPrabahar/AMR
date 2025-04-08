@@ -114,8 +114,8 @@ class MotorOdometer(Node):
         """
         Publish the RPM values and pulse counts to ROS2 topics at the specified publishing rate.
         """
-        rpm_right = abs(self.calculate_rpm(self.pulse_count_left_motor))
-        rpm_left = abs(self.calculate_rpm(self.pulse_count_right_motor))
+        rpm_left = abs(self.calculate_rpm(self.pulse_count_left_motor))
+        rpm_right = abs(self.calculate_rpm(self.pulse_count_right_motor))
         if self.v.angular and self.v.linear.x:
             if self.v.linear.x<0.1:
                 rpm_left=-rpm_left

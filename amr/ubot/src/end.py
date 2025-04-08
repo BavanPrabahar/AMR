@@ -68,9 +68,9 @@ class Conv(Node):
         
 
         if self.vel.linear.x or self.vel.angular.z:
-        	self.dist.angular.z += delt
-        	self.dist.linear.x += deld*np.cos(self.dist.angular.z)	
-        	self.dist.linear.y += deld*np.sin(self.dist.angular.z)
+        	self.dist.angular.z += delt*2
+        	self.dist.linear.x += deld*np.cos(self.dist.angular.z)*2	
+        	self.dist.linear.y += deld*np.sin(self.dist.angular.z)*38.66/13.7
         else:
             pass
 

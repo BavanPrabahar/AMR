@@ -79,7 +79,7 @@ class MotorControllerNode(Node):
     def inplace_rotation(self,omega):
         self.engage_motor()
         speed_w=(60 * omega) / (math.pi * self.wheel_diameter)
-        if speed_w >0:
+        if speed_w <0:
             gpio.output(self.direction_left_motor_pin, False)
             gpio.output(self.direction_right_motor_pin, False)
         else:
@@ -113,7 +113,7 @@ class MotorControllerNode(Node):
         speed_v_L = (60 * v_L) / (math.pi * self.wheel_diameter)
         speed_v_R = (60 * v_R) / (math.pi * self.wheel_diameter)
         return v_L, v_R,speed_v_L,speed_v_R
-    def set_motor_speed_r(self,speed):
+    def set_motor_speed_l(self,speed):
         self.engage_motor()
         if speed < 0:
             gpio.output(self.direction_left_motor_pin, True)
@@ -129,7 +129,7 @@ class MotorControllerNode(Node):
             pass
         self.dac.channel_a.raw_value = int(dac_value)
         print("speed_left:",speed)
-    def set_motor_speed_l(self,speed):
+    def set_motor_speed_r(self,speed):
         self.engage_motor()
         if speed < 0:
             gpio.output(self.direction_right_motor_pin, False)
